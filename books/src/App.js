@@ -1,6 +1,7 @@
 import './index.css';
 import { useState } from 'react';
 import BookCreate from './components/BookCreate';
+import BookList from './components/BookList';
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -10,13 +11,18 @@ function App() {
 		// books.push({ id: 123, title: title });
 		// setBooks(books);
 		setBooks((prevState) => {
-			return [...prevState, { id: '123', title: 'sss' }];
+			return [...prevState, { id: Math.round(Math.random() * 9999), title }];
 		});
+	};
+
+	const deleteBook = (id) => {
+		const updatedBooks = books.filter((book) => book.id !== id);
+		setBooks(updatedBooks);
 	};
 
 	return (
 		<div>
-			{books.length}
+			<BookList books={books} deleteBook={deleteBook} />
 			<BookCreate onCreate={createBook} />
 		</div>
 	);
