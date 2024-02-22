@@ -1,1 +1,10 @@
 GET http://localhost:3001/books
+###
+POST http://localhost:3001/books
+content-Type: application/json
+
+{
+  "title": "Harry Potter"
+}
+###
+DELETE http://localhost:3001/books/2
